@@ -29,7 +29,7 @@
 
 ### Tools/Libraries/Frameworks
 - Django: backend
-- MySQL or a NoSQL (MongoDB or Firebase)
+- SQLite
   - Haven't decide yet
 - **Potentially:** Twilio: Verify customer is real and have a phone
 - Payment: PayPal/Square/Stripe
