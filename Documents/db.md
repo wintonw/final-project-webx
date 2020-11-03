@@ -41,9 +41,9 @@ Customer:
 Fist name, Last name, email, phone number, address, customer id(primary key);
 
 menu:
-food item(primary key), price
+food_id(primary key), food item, price
 
 orders:
-customer id(foreign key), order id(primary key), total price, date of purchase, time
+customer id(foreign key), order id(primary key), total price, date of purchase, time, customer comment
 
 
