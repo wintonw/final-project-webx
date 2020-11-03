@@ -8,7 +8,8 @@
 **MenuItems**
 
 `{
-    items: []
+    itemsName: 
+    price: 
 }`
 
 **Users**
@@ -22,7 +23,16 @@
 }`
 
 **Orders**
+
 `{
     items: [itemsID: #, ]
     status: 
+    payment: 
+    total: 
+    comment: 
+    datetime: 
 }`
+
+----
+Food: 
+Order ID, Food Items, Quantity 
