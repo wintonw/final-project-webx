@@ -44,6 +44,6 @@ menu:
 food item(primary key), price
 
 orders:
-customer id(foreign key), order id(primary key), total price, date of purchase, time
+customer id(foreign key), order id(primary key), total price, date of purchase, time, customer comment
 
 
