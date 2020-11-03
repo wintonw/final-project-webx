@@ -4,5 +4,13 @@
 - Python 3.9.0
 - virtualenv [doc](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
 
+# Create a virtualenv
+**On macOS and Linux:**
+
+`python3 -m pip install --user virtualenv`
+
+**On Windows:**
+
+`py -m pip install --user virtualenv`
 # Install the required python packages by: 
-**requirement.txt**
+`pip install -r requirements.txt`
