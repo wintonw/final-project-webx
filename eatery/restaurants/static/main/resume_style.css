@@ -1,0 +1,69 @@
+.main {
+    padding: 25px;
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+p {
+    display: block;
+    margin-block-start: 8px;
+    margin-block-end: 8px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+
+}
+
+h1 h2 h3 h4 h5 h6 {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+
+.roundCorners {
+    border-radius: 25px;
+    background-color: #038efc;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+/* #77c2fd */
+
+.categories {
+    border-bottom: 5px solid #77c2fd;
+}
+
+/* to fix the margins*/
+.subContainer {
+    margin-top: 1em;
+}
+
+
+
+.lehigh {
+    display: inline;
+}
+
+.section {
+    margin-top: 2em;
+}
+
+.duration {
+    color: #038efc;
+}
+
+.skill-ratings {
+    float: right;
+    color: #77c2fd
+}
+
+.skills-subContainer {
+    line-height: 2em;
+}

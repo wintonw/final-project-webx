@@ -46,4 +46,5 @@ food_id(primary key), food item, price
 orders:
 customer id(foreign key), order id(primary key), total price, date of purchase, time, customer comment
 
-
+* Accounts
+Fist name, Last name, email, phone number, address, account id(primary key), is_admin, is_staff;
