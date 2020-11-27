@@ -10,5 +10,6 @@ urlpatterns = [
     path('logout/', views.logoutUser, name='logout'),
     # customer post login
     path('orders/', views.orders, name='orders'),
+    path('menu/', views.menu, name='menu'),
     # path('weight/', , name='contactMe'),
 ]

@@ -60,3 +60,8 @@ def logoutUser(request):
 def orders(request):
     context = {}
     return render(request, 'customer_orders.html', context)
+
+
+def menu(request):
+    context = {}
+    return render(request, 'static_menu.html', context)
