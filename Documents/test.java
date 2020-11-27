@@ -30,6 +30,7 @@ public class test {
             }
             while ((line = br2.readLine()) != null) {
                 DESC.add(line);
+                System.out.println(line);
             }
             while ((line = br3.readLine()) != null) {
                 PRICE.add(line);
