@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 # Create your views here.
@@ -14,18 +15,21 @@ def index(request):
 
 
 def signUp(request):
-    form = CreateUserForm()
-    if (request.method == 'POST'):
-        form = UserCreationForm(request.POST)
-        if (form.is_valid()):
-            user = form.cleaned_data.get('username')
-            messages.success(request, "Account was created for " + user)
+    if request.user.is_authenticated:
+        return redirect('restaurants:index')
+    else:
+        form = CreateUserForm()
+        if (request.method == 'POST'):
+            form = UserCreationForm(request.POST)
+            if (form.is_valid()):
+                user = form.cleaned_data.get('username')
+                messages.success(request, "Account was created for " + user)
 
-            form.save()
-            return redirect('restaurants:login')
+                form.save()
+                return redirect('restaurants:login')
 
-    context = {'form': form}
-    return render(request, 'signUp.html', context)
+        context = {'form': form}
+        return render(request, 'signUp.html', context)
 
 
 def loginPage(request):
@@ -50,3 +54,9 @@ def loginPage(request):
 def logoutUser(request):
     logout(request)
     return redirect('restaurants:login')
+
+
+@login_required(login_url='restaurants:login')
+def orders(request):
+    context = {}
+    return render(request, 'customer_orders.html', context)

@@ -8,5 +8,7 @@ urlpatterns = [
     path('login/', views.loginPage, name='login'),
     path('signUp/', views.signUp, name='signUp'),
     path('logout/', views.logoutUser, name='logout'),
+    # customer post login
+    path('orders/', views.orders, name='orders'),
     # path('weight/', , name='contactMe'),
 ]
