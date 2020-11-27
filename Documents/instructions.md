@@ -18,3 +18,6 @@
 
 # Install the required python packages by: 
 `pip install -r requirements.txt`
+
+
+# create groups, customer, staff, manager

@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+from .decorators import unauthenticated_user, allowed_users
 # Create your views here.
 
 
@@ -14,24 +15,23 @@ def index(request):
     return render(request, 'index.html')
 
 
+@unauthenticated_user
 def signUp(request):
-    if request.user.is_authenticated:
-        return redirect('restaurants:index')
-    else:
-        form = CreateUserForm()
-        if (request.method == 'POST'):
-            form = UserCreationForm(request.POST)
-            if (form.is_valid()):
-                user = form.cleaned_data.get('username')
-                messages.success(request, "Account was created for " + user)
+    form = CreateUserForm()
+    if (request.method == 'POST'):
+        form = UserCreationForm(request.POST)
+        if (form.is_valid()):
+            user = form.cleaned_data.get('username')
+            messages.success(request, "Account was created for " + user)
 
-                form.save()
-                return redirect('restaurants:login')
+            form.save()
+            return redirect('restaurants:login')
 
-        context = {'form': form}
-        return render(request, 'signUp.html', context)
+    context = {'form': form}
+    return render(request, 'signUp.html', context)
 
 
+@unauthenticated_user
 def loginPage(request):
 
     if request.method == 'POST':
@@ -57,6 +57,7 @@ def logoutUser(request):
 
 
 @login_required(login_url='restaurants:login')
+@allowed_users(allowed_roles=['customer'])
 def orders(request):
     context = {}
     return render(request, 'customer_orders.html', context)
