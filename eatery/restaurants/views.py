@@ -1,10 +1,11 @@
-from re import template
-from django.http import request
-from django.shortcuts import render
-from django.views.generic.base import TemplateView
-from django.http import HttpResponse, Http404, JsonResponse
-import datetime
-from time import gmtime, strftime
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CreateUserForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+
 # Create your views here.
 
 
@@ -12,5 +13,25 @@ def index(request):
     return render(request, 'index.html')
 
 
-class ContactMEView(TemplateView):
-    template_name = 'contact.html'
+def signUp(request):
+    form = CreateUserForm()
+    if (request.method == 'POST'):
+        form = UserCreationForm(request.POST)
+        if (form.is_valid()):
+            user = form.cleaned_data.get('username')
+            messages.success(request, "Account was created for " + user)
+
+            form.save()
+            return redirect('/login/')
+
+    context = {'form': form}
+    return render(request, 'signUp.html', context)
+
+
+def login(request):
+
+    if request.method == 'POST':
+        request.POST.get('username')
+        request.POST.get('password')
+    context = {}
+    return render(request, 'login.html', context)

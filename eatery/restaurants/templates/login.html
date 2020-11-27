@@ -3,5 +3,10 @@
 {%endblock siteCustomLinks%}
 
 {% block mainContent %}
-<h4>home page</h4>
+<h4>Login Page</h4>
+
+{% for message in messages%}
+<p id="messages">{{message}}</p>
+{%endfor%}
+
 {% endblock mainContent %}
