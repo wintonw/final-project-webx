@@ -5,6 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
 from django.contrib import messages
 
 from .decorators import unauthenticated_user, allowed_users
@@ -21,10 +22,14 @@ def signUp(request):
     if (request.method == 'POST'):
         form = UserCreationForm(request.POST)
         if (form.is_valid()):
-            user = form.cleaned_data.get('username')
-            messages.success(request, "Account was created for " + user)
 
-            form.save()
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            # register as customer
+            group = Group.objects.get(name='customer')
+            user.groups.add(group)
+            messages.success(request, "Account was created for " + username)
+
             return redirect('restaurants:login')
 
     context = {'form': form}
