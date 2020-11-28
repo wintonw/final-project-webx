@@ -75,3 +75,9 @@ def menu(request):
     context = {'menu': menu,
                }
     return render(request, 'menu.html', context)
+
+
+def cart(request):
+    optionsOneToTen = list(range(1, 11))
+    context = {}
+    return render(request, 'cart.html', context)
