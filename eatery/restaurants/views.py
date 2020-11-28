@@ -9,6 +9,7 @@ from django.contrib.auth.models import Group
 from django.contrib import messages
 from .models import Menu, Order
 from .decorators import unauthenticated_user, allowed_users
+from .util import calculatePrice
 # Create your views here.
 User = get_user_model()
 
@@ -79,5 +80,12 @@ def menu(request):
 
 def cart(request):
     optionsOneToTen = list(range(1, 11))
-    context = {}
+    total = calculatePrice(request.COOKIES['itemsList'])
+    context = {'total': total, }
     return render(request, 'cart.html', context)
+
+
+def cartJSON(request):
+    itemsList = request.COOKIES['itemsList']
+    context = {}
+    return HttpResponse(itemsList)

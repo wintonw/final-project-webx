@@ -12,5 +12,6 @@ urlpatterns = [
     path('cart/', views.cart, name='cart'),
     # customer post login
     path('orders/', views.orders, name='orders'),
-    # path('weight/', , name='contactMe'),
+    # test
+    path('cartJSON/', views.cartJSON, name='cartJSON'),
 ]

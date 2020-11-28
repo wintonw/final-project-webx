@@ -24,3 +24,8 @@
 
 # enable SQLite ( macOS already includes the JSON1 extension by default)
 - [doc](https://code.djangoproject.com/wiki/JSON1Extension)
+
+
+# PayPal
+Client ID
+> AZUlBN0TNi_0PGISPSbv1s2iAxNmrz-O8uwJh_rmXYrwNYr5rXp7KnkgvwpgXXGMiY8rS0SNZGUxg71N
