@@ -2,14 +2,15 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm
-from django.contrib.auth import authenticate, login, logout
+from .forms import CustomCreateUserForm
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from django.contrib import messages
 
 from .decorators import unauthenticated_user, allowed_users
 # Create your views here.
+User = get_user_model()
 
 
 def index(request):
@@ -18,17 +19,17 @@ def index(request):
 
 @unauthenticated_user
 def signUp(request):
-    form = CreateUserForm()
+    form = CustomCreateUserForm()
     if (request.method == 'POST'):
-        form = UserCreationForm(request.POST)
+        form = CustomCreateUserForm(request.POST)
         if (form.is_valid()):
 
             user = form.save()
-            username = form.cleaned_data.get('username')
+            email = form.cleaned_data.get('email')
             # register as customer
             group = Group.objects.get(name='customer')
             user.groups.add(group)
-            messages.success(request, "Account was created for " + username)
+            messages.success(request, "Account was created for " + email)
 
             return redirect('restaurants:login')
 

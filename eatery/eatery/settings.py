@@ -32,6 +32,8 @@ ALLOWED_HOSTS = ['*', ]
 # Application definition
 
 INSTALLED_APPS = [
+    'phonenumber_field',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -70,6 +72,7 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'restaurants.Account'
 WSGI_APPLICATION = 'eatery.wsgi.application'
 
 
@@ -131,3 +134,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+PHONENUMBER_DB_FORMAT = 'NATIONAL'
+PHONENUMBER_DEFAULT_REGION = 'US'
