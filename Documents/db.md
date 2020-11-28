@@ -34,17 +34,24 @@
 }`
 
 ----
-Food orders: 
+***Food orders: 
 Order ID(foreign key), Food Items(foreign key), Quantity, quantity price(will be a function calculated using menu table)
 
-Customer:
+***Customer:
 Fist name, Last name, email, phone number, address, customer id(primary key);
 
 menu:
 food_id(primary key), food item name, price
 
 orders:
-customer id(foreign key), order id(primary key), total price, date of purchase, time, customer comment
+- order id(primary key), 
+- customer id(foreign key), 
+
+- order content(JSON), 
+- total price, 
+- date/time of purchase, 
+- status (receive, accepted, ready, canceled)
+- customer comment,
 
 * Accounts
 Fist name, Last name, email, phone number, address, account id(primary key), is_admin, is_staff;

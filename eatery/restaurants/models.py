@@ -74,3 +74,18 @@ class Account(AbstractUser):
 
     def has_module_perms(self, app_label):
         return True
+
+
+class Menu(models.Model):
+    food_item_name = models.CharField(max_length=255)
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+
+
+class Orders(models.Model):
+    customer = models.ForeignKey(Account, on_delete=models.CASCADE)
+    order_content = models.JSONField()
+    total_price = models.DecimalField(max_digits=6, decimal_places=2)
+    time = models.DateTimeField(
+        auto_now_add=True, verbose_name='date joined')
+    status = models.CharField(max_length=10)
+    comment = models.CharField(max_length=255)

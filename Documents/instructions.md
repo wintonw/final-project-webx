@@ -21,3 +21,6 @@
 
 
 # create groups, customer, staff, manager
+
+# enable SQLite ( macOS already includes the JSON1 extension by default)
+- [doc](https://code.djangoproject.com/wiki/JSON1Extension)
