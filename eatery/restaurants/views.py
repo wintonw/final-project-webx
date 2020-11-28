@@ -72,5 +72,6 @@ def orders(request):
 def menu(request):
     menu = Menu.objects.all()
 
-    context = {'menu': menu}
+    context = {'menu': menu,
+               }
     return render(request, 'menu.html', context)

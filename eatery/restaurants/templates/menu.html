@@ -3,8 +3,22 @@
 {%endblock siteCustomLinks%}
 
 {% block mainContent %}
-{%for menu_item in menu%}
-{% include 'elements/menu_item.html' with value=menu_item%}
+<div class="container">
+    <h1>Menu</h1>
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12 ">
+            <ul class="list-group list-group-flush">
+                {%for menu_item in menu%}
 
-{%endfor%}
+                {% include 'elements/menu_item.html' with value=menu_item%}
+
+                {%endfor%}
+            </ul>
+
+        </div>
+    </div>
+
+</div>
+
+
 {% endblock mainContent %}
