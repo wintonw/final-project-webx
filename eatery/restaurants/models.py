@@ -55,7 +55,7 @@ class Account(AbstractUser):
     is_superuser = models.BooleanField(
         default=False, help_text='Designates that this user has all permissions without explicitly assigning them.', verbose_name='superuser status')
     is_staff = models.BooleanField(
-        default=False, help_text='Designates whether the user can log into this admin site.', verbose_name='staff status')
+        default=False, help_text='Designates whether the user can log into this admin site. Mine', verbose_name='staff status')
     is_admin = models.BooleanField(
         default=False, help_text='Designates whether the user can log into this admin site.', verbose_name='staff status')
     is_active = models.BooleanField(
@@ -80,12 +80,23 @@ class Menu(models.Model):
     food_item_name = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=6, decimal_places=2)
 
+    def __str__(self):
+        return "%i, %s" % (self.id, self.food_item_name)
 
-class Orders(models.Model):
+
+STATUS = [
+    ('A', 'Receive'),
+    ('B', 'Accepted'),
+    ('C', 'Ready'),
+    ('F', 'Canceled'),
+]
+
+
+class Order(models.Model):
     customer = models.ForeignKey(Account, on_delete=models.CASCADE)
     order_content = models.JSONField()
     total_price = models.DecimalField(max_digits=6, decimal_places=2)
     time = models.DateTimeField(
         auto_now_add=True, verbose_name='date joined')
-    status = models.CharField(max_length=10)
+    status = models.CharField(max_length=1, choices=STATUS)
     comment = models.CharField(max_length=255)

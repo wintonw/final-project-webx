@@ -1,0 +1,12 @@
+{% extends './customer_base.html'%}
+{% block siteCustomLinks%}
+{%endblock siteCustomLinks%}
+
+{% block mainContent %}
+{%for menu_item in menu%}
+{{menu_item.id}}
+{{menu_item.food_item_name}}
+{{menu_item.price}}
+<br>
+{%endfor%}
+{% endblock mainContent %}

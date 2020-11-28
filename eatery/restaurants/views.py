@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from django.contrib import messages
-
+from .models import Menu, Order
 from .decorators import unauthenticated_user, allowed_users
 # Create your views here.
 User = get_user_model()
@@ -70,5 +70,7 @@ def orders(request):
 
 
 def menu(request):
-    context = {}
-    return render(request, 'static_menu.html', context)
+    menu = Menu.objects.all()
+
+    context = {'menu': menu}
+    return render(request, 'menu.html', context)
