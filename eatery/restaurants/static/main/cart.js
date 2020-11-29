@@ -1,15 +1,16 @@
 // click on the check to update the new count
 $(".fa-check").on("click", function () {
-  var itemID = $(this).parent().parent().children("select").attr("id");
-  var e = document.getElementById(itemID);
+  var itemID = $(this).parent().parent().attr("id");
+  var e = document.getElementById(itemID + "Select");
   var count = e.options[e.selectedIndex].value;
   changeCount(itemID, count);
   alert("itemID: " + itemID + " count: " + count);
+  location.reload();
 });
 
 // remove the all items with all counts
 $(".fa-trash-alt").on("click", function () {
-  var itemID = $(this).parent().parent().children("select").attr("id");
+  var itemID = $(this).parent().parent().attr("id");
   alert("itemID: ");
   removeItemFromCookie(itemID);
   $(this).parent().parent().parent().parent().remove();
