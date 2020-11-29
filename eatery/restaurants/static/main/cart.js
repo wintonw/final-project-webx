@@ -14,15 +14,10 @@ $(".fa-trash-alt").on("click", function () {
   removeItemFromCookie(itemID);
   $(this).parent().parent().parent().parent().remove();
   alert("Item Removed");
-  window.location.reload(true);
+  location.reload();
 });
 
 // change the count and reload
-
-// write the subtotal
-function subTotal() {
-  document.write();
-}
 
 /**
 function myFunction() {

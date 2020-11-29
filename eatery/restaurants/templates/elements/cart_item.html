@@ -2,12 +2,12 @@
     <div class="d-flex justify-content-between">
 
         <div>
-            <h6>item 0</h6>
+            <h6>{{item.object.food_item_name}}</h6>
         </div>
 
         <div class="itemCartInfo">
-            Quantity:
-            <select class="itemCountInfo" name="itemName Select" id="1">
+            Quantity: {{item.count}}
+            <select class="itemCountInfo" name="itemName Select" id="{{item.object.id}}">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -23,7 +23,7 @@
             <a class="" onclick="" href="#"><i class="far fa-trash-alt"></i></a>
         </div>
         <div class="">
-            <p>$10.00</p>
+            <p>${{item.subTotalPrice}}</p>
         </div>
     </div>
 </li>

@@ -9,7 +9,7 @@ from django.contrib.auth.models import Group
 from django.contrib import messages
 from .models import Menu, Order
 from .decorators import unauthenticated_user, allowed_users
-from .util import calculatePrice
+from .util import calculatePrice, cartItems
 # Create your views here.
 User = get_user_model()
 
@@ -80,12 +80,19 @@ def menu(request):
 
 def cart(request):
     optionsOneToTen = list(range(1, 11))
-    total = calculatePrice(request.COOKIES['itemsList'])
-    context = {'total': total, }
-    return render(request, 'cart.html', context)
+    itemsList = request.COOKIES.get('itemsList', None)
+    if itemsList is not None:
+        total = calculatePrice(itemsList)
+        items = cartItems(itemsList)  # {'count':, 'object':, 'subTotalPrice':}
+        context = {'total': total,
+                   'items': items}
+        return render(request, 'cart.html', context)
+
+    return render(request, 'cart.html',)
 
 
 def cartJSON(request):
     itemsList = request.COOKIES['itemsList']
+    x = cartItems(itemsList)
     context = {}
-    return HttpResponse(itemsList)
+    return HttpResponse(x)
