@@ -22,7 +22,7 @@
 - Customers' cart are managed by sessions or cookies
 - **Potentially:** Customer create an account with phone verification required
 - Restaurant accounts (manager, restaurant associates) to be created by the superuser
-- Customer can track their order status (order accepted, order preparing, order ready)
+- Customer can track their order status (order accepted, order preparing, order ready, canceled)
 - Manager accounts can change and edit each order and refund
 - Restaurant accounts can change order status (order accepted, order preparing, order ready)
 - Manager accounts can shutdown or open the restaurant to accept/reject orders base on time of business

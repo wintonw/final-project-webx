@@ -105,6 +105,7 @@ def cart(request):
         context = {'total': total,
                    'items': items}
         return render(request, 'cart.html', context)
+        # check time, if close render CLOSED
 
     return render(request, 'cart.html',)
 
