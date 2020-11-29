@@ -144,3 +144,12 @@ def complete(request):
         return response
 
     return HttpResponse('Forbidden')
+
+
+def ordersDetails(request, id):
+    order = Order.objects.get(pk=id)
+    items = cartItems(order.order_content)
+    context = {'order': order,
+               'items': items}
+    print(items)
+    return render(request, "order_details.html", context)
