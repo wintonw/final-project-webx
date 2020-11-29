@@ -1,15 +1,17 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomCreateUserForm
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
 from django.contrib.auth.models import Group
 from django.contrib import messages
-from .models import Menu, Order
+from .models import Account, Menu, Order
 from .decorators import unauthenticated_user, allowed_users
 from .util import calculatePrice, cartItems
+import json
 # Create your views here.
 User = get_user_model()
 
@@ -42,10 +44,10 @@ def signUp(request):
 def loginPage(request):
 
     if request.method == 'POST':
-        username = request.POST.get('username')
+        email = request.POST.get('email')
         password = request.POST.get('password')
 
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(request, email=email, password=password)
 
         if user is not None:
             # good exist
@@ -64,7 +66,7 @@ def logoutUser(request):
 
 
 @login_required(login_url='restaurants:login')
-@allowed_users(allowed_roles=['customer'])
+# @allowed_users(allowed_roles=['customer'])
 def orders(request):
     context = {}
     return render(request, 'customer_orders.html', context)
@@ -72,14 +74,19 @@ def orders(request):
 
 def menu(request):
     menu = Menu.objects.all()
-
     context = {'menu': menu,
                }
     return render(request, 'menu.html', context)
 
 
+def menu_items(request, id):
+    item = Menu.objects.get(pk=id)
+    return HttpResponse(item)
+
+
+@login_required(login_url='restaurants:login')
+@ensure_csrf_cookie
 def cart(request):
-    optionsOneToTen = list(range(1, 11))
     itemsList = request.COOKIES.get('itemsList', None)
     if itemsList is not None:
         total = calculatePrice(itemsList)
@@ -96,3 +103,30 @@ def cartJSON(request):
     x = cartItems(itemsList)
     context = {}
     return HttpResponse(x)
+
+
+def test(request):
+    x = Account.object.get(id=request.user.id)
+    return HttpResponse(x)
+
+
+@csrf_exempt
+def complete(request):
+    if request.method == 'POST':
+        body = json.loads(request.body)
+        print(body)
+        # create the order
+        account = Account.object.get(id=request.user.id)
+        itemsList = request.COOKIES.get('itemsList', None)
+        total = calculatePrice(itemsList)
+        Order.objects.create(customer=account,
+                             order_content=itemsList,
+                             total_price=total,
+                             status='A',
+                             payment_id='null',
+                             payer_id=body['payerID'],
+                             comment=''
+                             )
+        return JsonResponse(body)
+
+    return HttpResponse('Forbidden')

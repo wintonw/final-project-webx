@@ -12,6 +12,9 @@ urlpatterns = [
     path('cart/', views.cart, name='cart'),
     # customer post login
     path('orders/', views.orders, name='orders'),
+    path('orders/complete', views.complete, name='complete'),
     # test
     path('cartJSON/', views.cartJSON, name='cartJSON'),
+    path('menu_items/<int:id>/', views.menu_items, name='menu_items'),
+    path('test/', views.test, name='test'),
 ]

@@ -99,4 +99,9 @@ class Order(models.Model):
     time = models.DateTimeField(
         auto_now_add=True, verbose_name='date joined')
     status = models.CharField(max_length=1, choices=STATUS)
+    payment_id = models.CharField(
+        max_length=255, verbose_name='PayPal paymentID')
+    payer_id = models.CharField(max_length=255, verbose_name='PayPal payerID')
+    last_modifed = models.DateTimeField(
+        auto_now=True, blank=True, null=True, verbose_name='last modifed')
     comment = models.CharField(max_length=255)
