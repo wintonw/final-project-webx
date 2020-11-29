@@ -85,7 +85,7 @@ class Menu(models.Model):
 
 
 STATUS = [
-    ('A', 'Receive'),
+    ('A', 'Received'),
     ('B', 'Accepted'),
     ('C', 'Ready'),
     ('F', 'Canceled'),
@@ -105,3 +105,6 @@ class Order(models.Model):
     last_modifed = models.DateTimeField(
         auto_now=True, blank=True, null=True, verbose_name='last modifed')
     comment = models.CharField(max_length=255)
+
+    def __str__(self):
+        return "%i, %s" % (self.id, self.customer)

@@ -1,4 +1,5 @@
 from django.http import HttpResponse, JsonResponse
+from django.http import response
 from django.shortcuts import render, redirect
 
 from django.contrib.auth.forms import UserCreationForm
@@ -10,7 +11,7 @@ from django.contrib.auth.models import Group
 from django.contrib import messages
 from .models import Account, Menu, Order
 from .decorators import unauthenticated_user, allowed_users
-from .util import calculatePrice, cartItems
+from .util import calculatePrice, cartItems, ordersContent
 import json
 # Create your views here.
 User = get_user_model()
@@ -65,13 +66,6 @@ def logoutUser(request):
     return redirect('restaurants:login')
 
 
-@login_required(login_url='restaurants:login')
-# @allowed_users(allowed_roles=['customer'])
-def orders(request):
-    context = {}
-    return render(request, 'customer_orders.html', context)
-
-
 def menu(request):
     menu = Menu.objects.all()
     context = {'menu': menu,
@@ -82,6 +76,23 @@ def menu(request):
 def menu_items(request, id):
     item = Menu.objects.get(pk=id)
     return HttpResponse(item)
+
+
+@login_required(login_url='restaurants:login')
+# @allowed_users(allowed_roles=['customer'])
+def orders(request):
+    # get all order by this customer
+    account = Account.object.get(id=request.user.id)
+    orderObjects = Order.objects.filter(customer=account)
+
+    ordersItems = ordersContent(orderObjects)
+    print(ordersItems)
+    # convert order_content to readable {'object':, cartItems}
+    # => {'object':, {'count':, 'object':, 'subTotalPrice':}}
+
+    context = {"orders": ordersItems,
+               }
+    return render(request, 'customer_orders.html', context)
 
 
 @login_required(login_url='restaurants:login')
@@ -114,7 +125,7 @@ def test(request):
 def complete(request):
     if request.method == 'POST':
         body = json.loads(request.body)
-        print(body)
+        # print(body)
         # create the order
         account = Account.object.get(id=request.user.id)
         itemsList = request.COOKIES.get('itemsList', None)
@@ -127,6 +138,9 @@ def complete(request):
                              payer_id=body['payerID'],
                              comment=''
                              )
-        return JsonResponse(body)
+        context = {'body': body}
+        response = HttpResponse(context)
+        response.delete_cookie('itemsList')
+        return response
 
     return HttpResponse('Forbidden')

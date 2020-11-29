@@ -64,6 +64,7 @@
                     payerID: data.payerID
                 }
                 completeOrder(orderIDs)
+
                 // Show a success message to the buyer
                 // alert('Transaction completed by ' + details.payer.name.given_name + '!');
                 window.location.replace("{% url 'restaurants:orders' %}");

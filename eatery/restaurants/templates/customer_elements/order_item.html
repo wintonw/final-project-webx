@@ -1,20 +1,22 @@
-<li class="list-group-item" id="listitem1">
-    <div class="d-flex justify-content-between">
+<tr>
 
-        <div>
-            <h6>{{item.object.food_item_name}}</h6>
-        </div>
+    <th scope="row"> <a href="#">{{value.id}}</a></th>
+    <td>{{value.time}}</td>
 
-        <div class="itemCartInfo" id="{{item.object.id}}">
-            Quantity: {{item.count}}
-            <select class="itemCountInfo" name="itemName Select">
-                id="{{item.object.id}}"
-            </select>
-            <a class="" onclick="" href="#"><i class="fas fa-check"></i></a>
-            <a class="" onclick="" href="#"><i class="far fa-trash-alt"></i></a>
-        </div>
-        <div class="">
-            <p>${{item.subTotalPrice}}</p>
-        </div>
-    </div>
-</li>
+    {% if value.status == "A" %}
+    <td>Received</td>
+    {% endif %}
+
+    {% if value.status == "B" %}
+    <td>Accepted</td>
+    {% endif %}
+
+    {% if value.status == "C" %}
+    <td>Ready</td>
+    {% endif %}
+
+    {% if value.status == "F" %}
+    <td>Canceled</td>
+    {% endif %}
+    <td>${{value.total_price}}</td>
+</tr>

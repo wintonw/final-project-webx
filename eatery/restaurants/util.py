@@ -30,3 +30,13 @@ def cartItems(itemsListStr):
         cart.append({'count': i['count'], 'object': item,
                      'subTotalPrice': subTotalPrice(i['count'], item.price)})
     return cart
+
+
+def ordersContent(orderObjects):
+    # {'object':, cartItems}
+    orders = []
+    for order in orderObjects:
+        itemsList = cartItems(order.order_content)
+        orders.append({'object': order,
+                       'cartItems': itemsList})
+    return orders

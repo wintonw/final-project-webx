@@ -6,6 +6,23 @@
 
 <div class="container">
     <h1>Orders</h1>
+    <div class="col-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Order #</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for order in orders%}
+                {% include 'customer_elements/order_item.html' with value=order.object%}
+                {% endfor%}
+            </tbody>
+        </table>
+    </div>
 </div>
 
 {% endblock mainContent %}
