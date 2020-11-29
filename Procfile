@@ -1,1 +1,1 @@
-web: gunicorn cse264.wsgi --log-file -
+web: gunicorn eatery.wsgi --log-file -
