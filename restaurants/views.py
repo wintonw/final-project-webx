@@ -105,8 +105,11 @@ def cart(request):
                    'items': items}
         return render(request, 'cart.html', context)
         # check time, if close render CLOSED
-
-    return render(request, 'cart.html',)
+    else:
+        #
+        nothing = True
+        context = {'nothing': nothing, }
+        return render(request, 'cart.html', context)
 
 
 def cartJSON(request):

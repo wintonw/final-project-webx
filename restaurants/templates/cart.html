@@ -4,20 +4,30 @@
 {%endblock siteCustomLinks%}
 
 {% block mainContent %}
-<div class="container">
+<div class="container ">
     <h1>Cart</h1>
-    <div class="row">
+    <div class="row ">
         <div class="col-lg-8 col-md-8 col-sm-12 ">
             <ul class="list-group list-group-flush">
+
+
+                {%if items%}
                 {%for item in items%}
                 {% include 'elements/cart_item.html' with value=item%}
                 {% endfor%}
+
+                {%else%}
+                <h3>It's empty here. <br> Check out and order here: <a class=""
+                        href="{% url 'restaurants:menu' %}">Menu</a>
+                </h3>
+                {%endif%}
             </ul>
 
         </div>
 
-        <div class="col-lg-4 col-md-4 col-sm-12">
-            <div class="card" style="width: 18rem;">
+        <div class="col-lg-4 col-md-4 col-sm-12 ">
+            <div class="card" style="min-width: 250px;
+            ">
                 <div class="card-body">
                     <h4 class="card-title">Order Summary</h4>
                     <hr>
