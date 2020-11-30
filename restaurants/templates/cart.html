@@ -44,7 +44,14 @@
                         </div>
                         <div class="">${{total}}</div>
                     </div>
+                    {% if user.is_authenticated %}
                     {% include 'elements/cart_paypal.html' with value=total%}
+
+                    {% else %}
+                    <p>Login to Check Out <a href="{% url 'restaurants:login' %}">Login</a></p>
+                    <p>Don't have an account? <a href="{% url 'restaurants:signUp' %}">Sign Up</a></p>
+                    {%endif%}
+
                 </div>
             </div>
         </div>

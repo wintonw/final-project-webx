@@ -9,6 +9,7 @@
         <h4>Sign Up Page</h4>
     </div>
 
+    <h3 style="color:red">{{form.errors}}</h3>
     <form method='POST' action=''>
         {% csrf_token %}
         {{form.as_p}}

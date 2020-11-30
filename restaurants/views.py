@@ -83,7 +83,7 @@ def menu_items(request, id):
 def orders(request):
     # get all order by this customer
     account = Account.object.get(id=request.user.id)
-    orderObjects = Order.objects.filter(customer=account)
+    orderObjects = Order.objects.filter(customer=account).order_by('-time')
 
     ordersItems = ordersContent(orderObjects)
     print(ordersItems)
@@ -95,7 +95,6 @@ def orders(request):
     return render(request, 'customer_orders.html', context)
 
 
-@login_required(login_url='restaurants:login')
 @ensure_csrf_cookie
 def cart(request):
     itemsList = request.COOKIES.get('itemsList', None)

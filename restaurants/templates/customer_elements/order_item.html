@@ -1,6 +1,6 @@
 <tr>
 
-    <th scope="row"> <a href="#">{{value.id}}</a></th>
+    <th scope="row"> <a href="{% url 'restaurants:ordersDetails' value.id%}">{{value.id}}</a></th>
     <td>{{value.time}}</td>
 
     {% if value.status == "A" %}
