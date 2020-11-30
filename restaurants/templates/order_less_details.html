@@ -1,0 +1,31 @@
+{% extends './customer_base.html'%}
+{%block title%}
+<title>Order Status</title>
+{%endblock title%}
+{% block siteCustomLinks%}
+{%endblock siteCustomLinks%}
+
+{% block mainContent %}
+
+<div class="container">
+    <h1>Orders Status</h1>
+    <h3>Order # {{order.id}}</h3>
+
+    {% if order.status == "A" %}
+    <h3>Status: Received</h3>
+    {% endif %}
+
+    {% if order.status == "B" %}
+    <h3>Status: Received</h3>
+    {% endif %}
+
+    {% if order.status == "C" %}
+    <h3>Status: Received</h3>
+    {% endif %}
+
+    {% if order.status == "F" %}
+    <h3>Status: Received</h3>
+    {% endif %}
+</div>
+
+{% endblock mainContent %}

@@ -150,9 +150,24 @@ def complete(request):
 
 
 def ordersDetails(request, id):
-    order = Order.objects.get(pk=id)
-    items = cartItems(order.order_content)
-    context = {'order': order,
-               'items': items}
-    print(items)
-    return render(request, "order_details.html", context)
+
+    # if not logged in or , only show order detail
+    if not request.user.is_authenticated:
+        order = Order.objects.get(pk=id)
+        context = {'order': order}
+        return render(request, "order_less_details.html", context)
+        # if logged it, more detail
+    else:
+        order = Order.objects.get(pk=id)
+        if order.customer == request.user:
+
+            items = cartItems(order.order_content)
+            context = {'order': order,
+                       'items': items}
+            return render(request, "order_details.html", context)
+        else:
+            order = Order.objects.get(pk=id)
+            context = {'order': order}
+            return render(request, "order_less_details.html", context)
+    # print(items)
+    # return render(request, "order_details.html", context)

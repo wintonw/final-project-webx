@@ -1,5 +1,8 @@
 {% extends './customer_base.html'%}
 {% load static %}
+{%block title%}
+<title>Cart</title>
+{%endblock title%}
 {% block siteCustomLinks%}
 {%endblock siteCustomLinks%}
 
@@ -58,7 +61,7 @@
                     {% include 'elements/cart_paypal.html' with value=total%}
 
                     {% else %}
-                    <p>Login to Check Out <a href="{% url 'restaurants:login' %}">Login</a></p>
+                    <p><a href="{% url 'restaurants:login' %}">Login</a> to Check Out </p>
                     <p>Don't have an account? <a href="{% url 'restaurants:signUp' %}">Sign Up</a></p>
                     {%endif%}
 
