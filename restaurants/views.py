@@ -55,7 +55,7 @@ def loginPage(request):
             login(request, user)
             return redirect('restaurants:index')
         else:
-            messages.info(request, 'Username or Password is INCORRECT')
+            messages.info(request, 'Email or Password is INCORRECT')
 
     context = {}
     return render(request, 'login.html', context)
