@@ -14,6 +14,8 @@ urlpatterns = [
     path('orders/', views.orders, name='orders'),
     path('orders/complete', views.complete, name='complete'),
     path('orders/<int:id>/', views.ordersDetails, name='ordersDetails'),
+    # staff, manager
+    path('dashboard/', views.dashboard, name='dashboard'),
     # test
     path('cartJSON/', views.cartJSON, name='cartJSON'),
     path('menu_items/<int:id>/', views.menu_items, name='menu_items'),

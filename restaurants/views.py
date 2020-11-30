@@ -139,7 +139,7 @@ def complete(request):
                              status='A',
                              payment_id='null',
                              payer_id=body['payerID'],
-                             comment=''
+                             comment='None'
                              )
         context = {'body': body}
         response = HttpResponse(context)
@@ -171,3 +171,19 @@ def ordersDetails(request, id):
             return render(request, "order_less_details.html", context)
     # print(items)
     # return render(request, "order_details.html", context)
+
+
+@login_required(login_url='restaurants:login')
+# @allowed_users(allowed_roles=['customer'])
+def dashboard(request):
+    # get all order by this customer
+    orderObjects = Order.objects.all().order_by('-time')
+
+    ordersItems = ordersContent(orderObjects)
+    print(ordersItems)
+    # convert order_content to readable {'object':, cartItems}
+    # => {'object':, {'count':, 'object':, 'subTotalPrice':}}
+
+    context = {"orders": ordersItems,
+               }
+    return render(request, 'dashboard.html', context)

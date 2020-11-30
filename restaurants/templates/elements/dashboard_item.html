@@ -1,0 +1,24 @@
+<tr>
+
+    <th scope="row"> <a href="{% url 'restaurants:ordersDetails' value.id%}">{{value.id}}</a></th>
+    <td>{{value.customer.first_name}} {{value.customer.last_name}}</td>
+    <td>{{value.time}}</td>
+
+    {% if value.status == "A" %}
+    <td>Received</td>
+    {% endif %}
+
+    {% if value.status == "B" %}
+    <td>Accepted</td>
+    {% endif %}
+
+    {% if value.status == "C" %}
+    <td>Ready</td>
+    {% endif %}
+
+    {% if value.status == "F" %}
+    <td>Canceled</td>
+    {% endif %}
+    <td>{{value.last_modifed}}</td>
+    <td>${{value.total_price}}</td>
+</tr>
