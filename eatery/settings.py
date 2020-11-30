@@ -27,7 +27,7 @@ SECRET_KEY = 'a4ea@))2su-vs!-28w8c@&$3ln2i86dz-*qpuq4)hhq_r(2eq@'
 DEBUG = True
 
 ALLOWED_HOSTS = ['cse264.herokuapp.com',
-                 '192.168.1.9', 'webx.wintonw.com', "localhost"]
+                 '192.168.1.9', 'eateryx.wintonw.com', "localhost"]
 
 
 # Application definition
