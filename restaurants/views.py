@@ -174,6 +174,7 @@ def ordersDetails(request, id):
 
 
 @login_required(login_url='restaurants:login')
+@allowed_users(allowed_roles=['staff', 'manager'])
 # @allowed_users(allowed_roles=['customer'])
 def dashboard(request):
     # get all order by this customer

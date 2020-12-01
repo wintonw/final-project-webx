@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: white;">
-    <a class="navbar-brand" id="navbarLogo" href="#">Winton Wong</a>
+    <a class="navbar-brand" id="navbarLogo" href="{% url 'restaurants:index' %}">EateryX</a>
     <button class="navbar-toggler shadow-none" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-down-square" fill="currentColor"
@@ -11,9 +11,52 @@
         </svg>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Blog</a>
-            <a class="nav-item nav-link active" href="#">Projects</a>
-        </div>
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-item nav-link active" href="{% url 'restaurants:menu' %}">Menu</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-item nav-link active" href="{% url 'restaurants:dashboard' %}">Dashboard</a>
+            </li>
+
+        </ul>
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                {% if user.is_authenticated %} <span class="navbar-text">Welcome, {{ user }}</span>
+                {% else %} <span class="navbar-text">Welcome Guest!!! </span>
+                {% endif %}
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class="far fa-user-circle"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                    {% if user.is_authenticated %}
+                    <a class="dropdown-item" href="{% url 'restaurants:orders' %}">Orders</a>
+                    <a class="dropdown-item" href="{% url 'restaurants:logout' %}">Logout</a>
+                    {% else %}
+                    <a class="dropdown-item" href="{% url 'restaurants:login' %}">Login</a>
+                    <a class="dropdown-item" href="{% url 'restaurants:signUp' %}">Sign Up</a>
+                    {% endif %}
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="navbar-text" href="{% url 'restaurants:cart' %}"><i class="fas fa-shopping-cart"></i></a>
+            </li>
+
+
+
+
+
+
+        </ul>
     </div>
+
 </nav>
