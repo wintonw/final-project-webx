@@ -85,10 +85,10 @@ class Menu(models.Model):
 
 
 STATUS = [
-    ('A', 'Received'),
-    ('B', 'Accepted'),
-    ('C', 'Ready'),
-    ('F', 'Canceled'),
+    ('A', 'Received'),  # Red
+    ('B', 'Accepted'),  # Yellow
+    ('C', 'Ready'),  # Green
+    ('F', 'Canceled'),  # Grey
 ]
 
 

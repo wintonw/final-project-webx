@@ -177,10 +177,16 @@ def ordersDetails(request, id):
 # @allowed_users(allowed_roles=['customer'])
 def dashboard(request):
     # get all order by this customer
-    orderObjects = Order.objects.all().order_by('-time')
+    if request.method == 'POST':
+        updatedOrder = request.POST.get('orderID')
+        newOrderStatus = request.POST.get('orderStatus')
 
+        orderObjects = Order.objects.get(id=updatedOrder)
+        orderObjects.status = newOrderStatus
+        orderObjects.save()
+
+    orderObjects = Order.objects.all().order_by('-time')
     ordersItems = ordersContent(orderObjects)
-    print(ordersItems)
     # convert order_content to readable {'object':, cartItems}
     # => {'object':, {'count':, 'object':, 'subTotalPrice':}}
 

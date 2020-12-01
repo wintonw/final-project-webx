@@ -3,22 +3,57 @@
     <th scope="row"> <a href="{% url 'restaurants:ordersDetails' value.id%}">{{value.id}}</a></th>
     <td>{{value.customer.first_name}} {{value.customer.last_name}}</td>
     <td>{{value.time}}</td>
+    <td>
 
-    {% if value.status == "A" %}
-    <td>Received</td>
-    {% endif %}
+        <form method="POST" action="">
+            {% csrf_token %}
+            <select name="orderStatus" id="{{value.id}}">
+                {% if value.status == "A" %}
+                <option value="A" selected>Received</option>
+                <option value="B">Accepted</option>
+                <option value="C">Ready</option>
+                <option value="F">Canceled</option>
 
-    {% if value.status == "B" %}
-    <td>Accepted</td>
-    {% endif %}
+                {% elif value.status == "B" %}
+                <option value="A">Received</option>
+                <option value="B" selected>Accepted</option>
+                <option value="C">Ready</option>
+                <option value="F">Canceled</option>
 
-    {% if value.status == "C" %}
-    <td>Ready</td>
-    {% endif %}
 
-    {% if value.status == "F" %}
-    <td>Canceled</td>
-    {% endif %}
-    <td>{{value.last_modifed}}</td>
+                {% elif value.status == "C" %}
+                <option value="A">Received</option>
+                <option value="B">Accepted</option>
+                <option value="C" selected>Ready</option>
+                <option value="F">Canceled</option>
+
+
+                {% elif value.status == "F" %}
+                <option value="A">Received</option>
+                <option value="B">Accepted</option>
+                <option value="C">Ready</option>
+                <option value="F" selected>Canceled</option>
+                {% endif %}
+            </select>
+            <button type="submit" class="btn btn-primary btn-sm" name="orderID" value="{{value.id}}">&#10003</button>
+        </form>
+    </td>
+
+    <td>
+        {% if value.status == "A" %}
+
+        <button type="button" class="btn btn-danger small" disabled></button>
+        {% elif value.status == "B" %}
+        <button type="button" class="btn btn-warning small" disabled></button>
+
+
+        {% elif value.status == "C" %}
+        <button type="button" class="btn btn-success small" disabled></button>
+
+        {% elif value.status == "F" %}
+        <button type="button" class="btn btn-secondary small" disabled></button>
+        {% endif %}
+
+        {{value.last_modifed}}</td>
     <td>${{value.total_price}}</td>
 </tr>
