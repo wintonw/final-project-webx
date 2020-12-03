@@ -67,7 +67,7 @@
 
                 // Show a success message to the buyer
                 // alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                window.location.replace("{% url 'restaurants:orders' %}");
+                window.location.assign("{% url 'restaurants:orders' %}");
             });
         }
 

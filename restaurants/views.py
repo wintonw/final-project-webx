@@ -150,13 +150,21 @@ def complete(request):
 
 
 def ordersDetails(request, id):
-
+    group = request.user.groups.all()[0].name
     # if not logged in or , only show order detail
     if not request.user.is_authenticated:
         order = Order.objects.get(pk=id)
         context = {'order': order}
         return render(request, "order_less_details.html", context)
         # if logged it, more detail
+    elif(group == 'manager' or group == 'staff'):
+        # check role
+        order = Order.objects.get(pk=id)
+        items = cartItems(order.order_content)
+        context = {'order': order,
+                   'items': items}
+        return render(request, "order_details.html", context)
+
     else:
         order = Order.objects.get(pk=id)
         if order.customer == request.user:
