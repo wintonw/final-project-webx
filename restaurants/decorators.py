@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.contrib.auth import get_user_model
+from django.core.exceptions import PermissionDenied
 User = get_user_model()
 
 
@@ -24,7 +25,7 @@ def allowed_users(allowed_roles=[]):
             if group in allowed_roles:
                 return view_fuc(request, *args, **kwargs)
             else:
-                return HttpResponse("This page is not for you.")
+                raise PermissionDenied
         return wrapper_func
     return decorator
 
