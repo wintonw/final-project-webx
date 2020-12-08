@@ -2,23 +2,14 @@
     <div class="d-flex justify-content-between">
 
         <div>
-            <h6>{{item.object.food_item_name}}</h6>
+            <p><strong>{{item.object.food_item_name}}</strong></p>
         </div>
 
         <div class="itemCartInfo" id="{{item.object.id}}">
-            Quantity: {{item.count}}
-            <select class="itemCountInfo" name="itemName Select" id="{{item.object.id}}Select">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option selected="selected" value="10">10</option>
-            </select>
+            Quantity:
+            <input type="number" id="{{item.object.id}}Select" value="{{item.count}}"
+                style="max-width:3em; max-height:1.5em;">
+
             <a class="" onclick="" href="#"><i class="fas fa-check"></i></a>
             <a class="" onclick="" href="#"><i class="far fa-trash-alt"></i></a>
         </div>

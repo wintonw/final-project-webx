@@ -1,13 +1,3 @@
-// click on the check to update the new count
-$(".fa-check").on("click", function () {
-  var itemID = $(this).parent().parent().attr("id");
-  var e = document.getElementById(itemID + "Select");
-  var count = e.options[e.selectedIndex].value;
-  changeCount(itemID, count);
-  alert("itemID: " + itemID + " count: " + count);
-  location.reload();
-});
-
 // remove the all items with all counts
 $(".fa-trash-alt").on("click", function () {
   var itemID = $(this).parent().parent().attr("id");
@@ -18,9 +8,28 @@ $(".fa-trash-alt").on("click", function () {
   location.reload();
 });
 
+$(".fa-check").on("click", function () {
+  var itemID = $(this).parent().parent().attr("id");
+  var count = document.getElementById(itemID + "Select").value;
+  changeCount(itemID, count);
+  alert("itemID: " + itemID + " count: " + count);
+  location.reload();
+});
 // change the count and reload
 
 /**
+ * // click on the check to update the new count
+$(".fa-check").on("click", function () {
+  var itemID = $(this).parent().parent().attr("id");
+  var e = document.getElementById(itemID + "Select");
+  var count = e.options[e.selectedIndex].value;
+  changeCount(itemID, count);
+  alert("itemID: " + itemID + " count: " + count);
+  location.reload();
+});
+
+
+// 
 function myFunction() {
     var e = document.getElementById("mySelect");
     var result = e.options[e.selectedIndex].value;

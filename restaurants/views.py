@@ -107,8 +107,9 @@ def cart(request):
         # check time, if close render CLOSED
     else:
         #
+        total = 0
         nothing = True
-        context = {'nothing': nothing, }
+        context = {'total': total, 'nothing': nothing, }
         return render(request, 'cart.html', context)
 
 
