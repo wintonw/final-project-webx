@@ -1,0 +1,106 @@
+.joke{
+    text-align: center;
+    
+}
+
+h1,h2{
+    
+    min-height:10vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:#fff;
+    
+}
+.ag-format-container {
+    width: 1142px;
+    margin: 0 auto;
+  }
+  
+  
+  
+  .ag-page-404 {
+    padding: 15px 0 0;
+    background: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/404-error-smoke-from-toaster/images/toaster-bg.png) no-repeat 50% 100%;
+  }
+  
+  
+  .ag-canvas-404 {
+    opacity: .7;
+    filter: alpha(opacity=70);
+  
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
+  .ag-toaster-wrap {
+    display: table;
+    margin: 0 auto;
+    padding: 200px 0 0;
+  
+    position: relative;
+  }
+  .ag-toaster {
+    width: 340px;
+    height: 217px;
+  
+    position: relative;
+  }
+  .ag-toaster_toast-handler {
+    width: 155px;
+    height: 200px;
+    margin-left: 85px;
+    padding-top: 60px;
+  
+    
+  
+    z-index: 1;
+    position: absolute;
+    top: -150px;
+  }
+  .ag-toaster_shadow {
+    width: 165px;
+    height: 9px;
+    background: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/404-error-smoke-from-toaster/images/sprite-toaster.png) -340px -195px no-repeat;
+  
+    position: absolute;
+    left: 0;
+    bottom: 91px;
+  }
+  .ag-toaster_toast {
+    width: 159px;
+    height: 171px;
+    background: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/404-error-smoke-from-toaster/images/sprite-toaster.png) -340px 0 no-repeat;
+  
+    z-index: -1;
+    position: relative;
+  }
+  .ag-toaster_front {
+    width: 340px;
+    height: 217px;
+    background: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/404-error-smoke-from-toaster/images/sprite-toaster.png) 0 -18px no-repeat;
+  
+    z-index: 2;
+    position: relative;
+  }
+  .ag-toaster_lever {
+    width: 22px;
+    height: 21px;
+    background: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/404-error-smoke-from-toaster/images/sprite-toaster.png) -340px -171px no-repeat;
+  
+    position: absolute;
+    top: 75px;
+    right: 12px;
+  }
+  .ag-toaster_back {
+    width: 340px;
+    height: 18px;
+    background: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/404-error-smoke-from-toaster/images/sprite-toaster.png) no-repeat;
+  
+    z-index: -3;
+    position: relative;
+  }
+  
+  

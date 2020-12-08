@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Optimal Internet Explorer compatibility -->
+
+    {%block title%}{%endblock title%}
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "restaurants/404.css" %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static "main/custom.css" %}">
+
+    <script src="https://kit.fontawesome.com/ce4611d174.js" crossorigin="anonymous"></script>
+    {%block siteCustomLinks%}{%endblock siteCustomLinks%}
+
+</head>
+
+<body>
+    {%include "customer_elements/customer_navbar.html"%}
+
+    <!-- main contents -->
+    <div class="joke">
+        <h1>How does Darth Vader like his toast?</h1>
+        <h2>A little on the dark side</h2>
+    </div>
+    <div class="text-center">
+        <button type="button" class="btn btn-outline-dark">Higher Ground</button>
+    </div>
+
+    <div class="ag-page-404">
+        <div class="ag-toaster-wrap">
+            <div class="ag-toaster">
+                <div class="ag-toaster_back"></div>
+                <div class="ag-toaster_front">
+                    <div class="js-toaster_lever ag-toaster_lever"></div>
+                </div>
+                <div class="ag-toaster_toast-handler">
+                    <div class="ag-toaster_shadow"></div>
+                    <div class="js-toaster_toast ag-toaster_toast js-ag-hide"></div>
+                </div>
+            </div>
+
+            <canvas id="canvas-404" class="ag-canvas-404"></canvas>
+            <img class="ag-canvas-404_img"
+                src="https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/404-error-smoke-from-toaster/images/smoke.png">
+        </div>
+    </div>
+    <!-- main contents -->
+
+    {%include "elements/footer.html"%}
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" %}"></script>
+    {%block customJS%}{%endblock customJS%}
+</body>
+
+
+</html>
+
+{% load static %}
