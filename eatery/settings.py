@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'a4ea@))2su-vs!-28w8c@&$3ln2i86dz-*qpuq4)hhq_r(2eq@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['cse264.herokuapp.com',
                  '192.168.1.9', 'eateryx.wintonw.com', "localhost"]
