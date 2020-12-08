@@ -36,6 +36,7 @@ class MyAccountManager(BaseUserManager):
 
         )
         user.is_admin = True
+        user.is_manager = True
         user.is_staff = True
         user.is_superuser = True
         user.save(using=self._db)
@@ -54,10 +55,10 @@ class Account(AbstractUser):
         auto_now=True, blank=True, null=True, verbose_name='last login')
     is_superuser = models.BooleanField(
         default=False, help_text='Designates that this user has all permissions without explicitly assigning them.', verbose_name='superuser status')
-    is_staff = models.BooleanField(
-        default=False, help_text='Designates whether the user can log into this admin site. Mine', verbose_name='staff status')
+    is_manager = models.BooleanField(
+        default=False, help_text='Designates whether the user can log into this admin site. manager', verbose_name='manager status')
     is_admin = models.BooleanField(
-        default=False, help_text='Designates whether the user can log into this admin site.', verbose_name='staff status')
+        default=False, help_text='Designates whether the user can log into this admin site. default', verbose_name='staff status')
     is_active = models.BooleanField(
         default=True, help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.', verbose_name='active')
 
