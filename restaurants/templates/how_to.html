@@ -1,0 +1,45 @@
+{% extends './customer_base.html'%}
+{%block title%}
+<title>How To</title>
+{%endblock title%}
+{% block siteCustomLinks%}
+{%endblock siteCustomLinks%}
+
+{% block mainContent %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3 id="user-story-use-case">User Story/Use Case</h3>
+            <blockquote>
+                <p><strong>Customers</strong> views the menu online, order for pickup, with an account. </p>
+                <p><strong>Manager</strong> can see, accept/reject, change status, cancel, edit, of the order of
+                    customers</p>
+                <p><strong>Manager/restaurant associates</strong> can see, accept/reject, change order status, of the
+                    order of customers</p>
+            </blockquote>
+        </div>
+        <div class="col">
+            <h3 id="existing-features">Existing Features</h3>
+            <ul>
+                <li>Customers&#39; cart are managed by sessions and cookies</li>
+                <li>Restaurant accounts (manager, staff/restaurant associates) to be created by the superuser</li>
+                <li>Customer can track their order status (order accepted, order preparing, order ready, canceled)</li>
+                <li>Customers can be refunded using the PayPal Business Account</li>
+                <li>Restaurant accounts can change order status (order accepted, order preparing, order ready)</li>
+            </ul>
+        </div>
+        <div class="col">
+            <p> <strong>TEST ACCOUNTS</strong></p>
+            <p>Or you can go make an account</p>
+            <p>user@test.com</p>
+            <p>useruseruser</p>
+            <hr>
+            <p>staff@test.com</p>
+            <p>staffstaff</p>
+            <p></p>
+        </div>
+    </div>
+
+</div>
+{% endblock mainContent %}
