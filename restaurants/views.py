@@ -1,5 +1,5 @@
-from django.http import HttpResponse, JsonResponse
-from django.http import response
+from django.http import HttpResponse, JsonResponse, response, Http404
+
 from django.shortcuts import render, redirect
 
 from django.contrib.auth.forms import UserCreationForm
@@ -156,7 +156,10 @@ def ordersDetails(request, id):
         group = request.user.groups.all()[0].name
     # if not logged in or , only show order detail
     if not request.user.is_authenticated:
-        order = Order.objects.get(pk=id)
+        try:
+            order = Order.objects.get(pk=id)
+        except:
+            raise Http404
         context = {'order': order}
         return render(request, "order_less_details.html", context)
         # if logged it, more detail
@@ -169,7 +172,10 @@ def ordersDetails(request, id):
         return render(request, "order_details.html", context)
 
     else:
-        order = Order.objects.get(pk=id)
+        try:
+            order = Order.objects.get(pk=id)
+        except:
+            raise Http404
         if order.customer == request.user:
 
             items = cartItems(order.order_content)
@@ -177,7 +183,10 @@ def ordersDetails(request, id):
                        'items': items}
             return render(request, "order_details.html", context)
         else:
-            order = Order.objects.get(pk=id)
+            try:
+                order = Order.objects.get(pk=id)
+            except:
+                raise Http404
             context = {'order': order}
             return render(request, "order_less_details.html", context)
     # print(items)
