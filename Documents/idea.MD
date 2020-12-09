@@ -10,26 +10,30 @@
 
 ### Functionality
 > A open source website platform for restaurants to accept manage orders for pickup, and maybe tools to analyze sales
+> analyze sales, google analytics 
+> CSRF
+> Sessions
+> Cookies
 
 ### User Story/Use Case
-> **Customers** views the menu online, order for pickup, with or without an account. 
+> **Customers** views the menu online, order for pickup, with an account. 
 
-> **Manager** can see, accept/reject, change status, cancel, edit, refund, of the order of customers
+> **Manager** can see, accept/reject, change status, cancel, edit, of the order of customers
 
 > **Manager/restaurant associates** can see, accept/reject, change order status, of the order of customers
 
 ### Technical Design
-- Customers' cart are managed by sessions or cookies
-- **Potentially:** Customer create an account with phone verification required
-- Restaurant accounts (manager, restaurant associates) to be created by the superuser
-- Customer can track their order status (order accepted, order preparing, order ready, canceled)
-- Manager accounts can change and edit each order and refund
-- Restaurant accounts can change order status (order accepted, order preparing, order ready)
-- Manager accounts can shutdown or open the restaurant to accept/reject orders base on time of business
+- Customers' cart are managed by cookies
+- Customer log in is managed by sessions
+- Restaurant accounts (manager, restaurant associates) to be reassigned by the superuser or manager
+- Customer can track their order status (order accepted, order preparing, order ready, canceled), logged in and logged out
+- Manager accounts can change and edit each order
+- Restaurant Staff accounts can change order status (order accepted, order preparing, order ready) in the dashboard
+- PayPal, ID of payer is recorded
 
 ### Tools/Libraries/Frameworks
-- Django: backend
-- SQLite
-  - Haven't decide yet
-- **Potentially:** Twilio: Verify customer is real and have a phone
-- Payment: PayPal/Square/Stripe
+- Backend: Django
+- Frontend: Bootstrap, JQuery
+- Database: SQLite
+- Payment: PayPal
+- Whitenoise: A middleware that help serve static files in deployment
