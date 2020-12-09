@@ -214,3 +214,7 @@ def dashboard(request):
     context = {"orders": ordersItems,
                }
     return render(request, 'dashboard.html', context)
+
+
+def howTo(request):
+    return render(request, 'how_to.html')
