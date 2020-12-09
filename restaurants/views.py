@@ -151,7 +151,9 @@ def complete(request):
 
 
 def ordersDetails(request, id):
-    group = request.user.groups.all()[0].name
+    group = 0
+    if request.user.is_authenticated:
+        group = request.user.groups.all()[0].name
     # if not logged in or , only show order detail
     if not request.user.is_authenticated:
         order = Order.objects.get(pk=id)
