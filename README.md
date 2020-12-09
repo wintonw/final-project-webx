@@ -1,29 +1,38 @@
-[![Work in Repl.it](https://classroom.github.com/assets/work-in-replit-14baed9a392b3a25080506f3b7b6d57f295ec2978f6f33ec97e36a161684cbe9.svg)](https://classroom.github.com/online_ide?assignment_repo_id=319579&assignment_repo_type=GroupAssignmentRepo)
-# Final Project
+### This provide the instruction to get the app running on your machine
 
-## Due Thursday, December 3, 2020
+# Requirement: 
+- Python 3.9.0
+- virtualenv [doc](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
 
-### Build a web app in a team of 5-6
+# Pip install a virtualenv
+**On macOS and Linux:**
 
-### Requirements:
-* Must have user accounts and different user roles
-* Must use a database
-* Must have interactive UI
-* Must use a library or framework not discussed/used in class
-* Must use an outside REST API in some way
-* Must deploy your application in some publicly accessible way (Heroku, Digital Ocean, AWS, etc)
+`python3 -m pip install --user virtualenv`
 
-### Instructions
-Build your team and write a document describing your application to me by Thursday, November 12, 2020. I will approve your web application idea. In your paper, include:
-* the name of your application
-* name and roles of all your team members
-* its functionality
-* user story/use case
-* technical design 
-* tools/libraries/frameworks you will use
+**On Windows:**
 
-### Final deliverable:
-* Codebase in Github Repo
-* README describing your project, with all of the information outlined above (team members, application name, description, etc). You will also include detailed instructions of how to install and run your application, and what API keys, databases, etc are needed to run your application. You will also provide a link to a live demo of your application.
-* Final Presentation and Demo
-  * You will prepare a 5 minute presentation and demo of your application in class during during a zoom call with me (time TBD)
+`py -m pip install --user virtualenv`
+
+
+# Create a virtual env, and activate it
+- virtualenv [doc](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
+# Switch to the director where manage.py is located
+# Install the required python packages by: 
+`pip install -r requirements.txt`
+
+
+# create groups, customer, staff, manager
+
+# enable SQLite ( macOS already includes the JSON1 extension by default)
+- [doc](https://code.djangoproject.com/wiki/JSON1Extension)
+
+
+# Run the server 
+`python manage.py runserver`
+
+### If `DEBUG = False` in eatery/settings.py
+Make sure to run `python manage.py collectstatic`
+- Although there is only one static image, this isn't ran it will not be displayed
+
+### If `DEBUG = True` in eatery/settings.py
+- 404 page won't be server, but instead a list of all routes are displayed
