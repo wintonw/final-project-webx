@@ -13,7 +13,14 @@
 
 > **Github:** https://github.com/cse264/final-project-webx/tree/live
 
-> **{user, email, password}:** {customer, user@test.com, useruseruser}, {staff, staff@test.com, staffstaff}, {manager, manager@test.com, managermanager}
+> **Test Accounts: {user, email, password}:** 
+> - {customer, user@test.com, useruseruser}, 
+> - {staff, staff@test.com, staffstaff}, 
+> - {manager, manager@test.com, managermanager}
+
+> **PayPal:**
+> - sb-nhogx1433147@personal.example.com
+> - rrY_%?g9
 
 ### User Story/Use Case
 > **Customers** views the menu online, order and pay for pickup, and checks order status and detail when logged in. 
@@ -25,8 +32,8 @@
 ### Functionality
 - A open source website platform for restaurants to accept and manage orders for pickup, tools to analyze sales, and managing account users
 - Customers can create accounts managed by cookies to place, pay, and view orders
-- Analyze sales and use google analytics in order to show website performance with customer base
-- sales are made through a paypal api(sandbox) that is controled by cookies and generate CSRF Tokens to confirm payment
+- Analyze sales and use Google Analytics in order to show website performance with customer base
+- Sales are made through a PayPal api(sandbox), payer ID is then recorded and added into the database
 
 
 
@@ -41,7 +48,7 @@
 
 ### Tools/Libraries/Frameworks/Languages
 - Backend: Django, Python, JavaScript
-- Frontend: Bootstrap, JQuery, HTML, CSS
+- Frontend: Bootstrap, JQuery, HTML/CSS/JS
 - Database: SQLite
 - Payment: PayPal
 - Whitenoise: A middleware that help serve static files in deployment
