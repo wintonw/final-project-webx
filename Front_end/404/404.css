@@ -2,6 +2,16 @@
     text-align: center;
     
 }
+.button_header{
+  text-align: center;
+  justify-content: center;
+}
+.button{
+  height: 10%;
+  width: 10%;
+  border-style: solid;
+  border-color: black;
+}
 
 h1,h2{
     
