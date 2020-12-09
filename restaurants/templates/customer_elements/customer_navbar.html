@@ -34,7 +34,7 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                     {% if user.is_authenticated %}
-                    {% if user.is_staff %}
+                    {% if user.is_restaurant_staff %}
                     <a class="dropdown-item" href="{% url 'restaurants:dashboard' %}">Dashboard</a>
                     {% endif %}
                     <a class="dropdown-item" href="{% url 'restaurants:orders' %}">Orders</a>

@@ -7,7 +7,7 @@ from restaurants.models import Account, Menu, Order
 
 class AccountAdmin(UserAdmin):
     list_display = ('id', 'email', 'first_name', 'last_name',
-                    'phone_number', 'date_joined', 'is_staff')
+                    'phone_number', 'date_joined', 'is_restaurant_staff')
     search_field = ('email', 'first_name', 'last_name')
     read_only = ('date_joined', 'last_login')
 
