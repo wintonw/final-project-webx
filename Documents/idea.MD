@@ -9,7 +9,11 @@
 - Frontend interactive, UI design, html/css, database designs and implementations
 
 ## Deployable Website
-> http://eateryx.wintonw.com
+> **Website:** http://eateryx.wintonw.com
+
+> **Github:** https://github.com/cse264/final-project-webx/tree/live
+
+> **{user, email, password}:** {customer, user@test.com, useruseruser}, {staff, staff@test.com, staffstaff}, {manager, manager@test.com, managermanager}
 
 ### User Story/Use Case
 > **Customers** views the menu online, order and pay for pickup, and checks order status and detail when logged in. 
